@@ -244,3 +244,60 @@ error: Your local changes to the following files would be overwritten by checkou
         git/command.txt
 Please commit your changes or stash them before you switch branches.
 Aborting
+
+$ git branch
+  main
+* newsubbranch
+
+$ git checkout main
+error: Your local changes to the following files would be overwritten by checkout:
+        git/command.txt
+Please commit your changes or stash them before you switch branches.
+Aborting
+
+$ git add .
+warning: in the working copy of 'git/command.txt', CRLF will be replaced by LF the next time Git touches it
+
+$ git commit -m "switch to main"
+[newsubbranch 0f0be4f] switch to main
+ 1 file changed, 53 insertions(+), 1 deletion(-)
+[newsubbranch 0f0be4f] switch to main
+ 1 file changed, 53 insertions(+), 1 deletion(-)
+ 1 file changed, 53 insertions(+), 1 deletion(-)
+
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+$ git log
+commit 946edd1aeb701b96c62543172c4cb728d2fb1d57 (HEAD -> main)
+Author: samanta1401 <psamanta1401@gmail.com>
+Date:   Mon Dec 16 16:53:32 2024 +0530
+
+    third commit
+
+commit 7106cd0b8202c4a2f141bddac7d5cafa42945bca
+Author: smanta1401 <105944619+SAMANTA1401@users.noreply.github.com>
+Date:   Mon Dec 16 15:47:59 2024 +0530
+
+    second commit
+
+$ git merge newsubbranch
+Updating 946edd1..0f0be4f
+Fast-forward
+ git/command.txt    | 138 ++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ myproject1/xyz.txt |   1 +
+ 2 files changed, 138 insertions(+), 1 deletion(-)
+ create mode 100644 myproject1/xyz.txt
+
+$ cd .git
+$ ls
+COMMIT_EDITMSG  config  description  FETCH_HEAD  HEAD  hooks/  index  info/  logs/  objects/  ORIG_HEAD  refs/
+$ cd .. # to back 
+$ git branch
+* main
+  newsubbranch
+
+$ git branch -d newsubbranch
+Deleted branch newsubbranch (was 0f0be4f).
