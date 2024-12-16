@@ -76,3 +76,35 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
         modified:   git/command.txt
+
+$ git commit -m "second commit"
+[main 7106cd0] second commit
+ 6 files changed, 239 insertions(+)
+ create mode 100644 git/command.txt
+ create mode 100644 git/git.txt
+ create mode 100644 git/theory.ipynb
+ create mode 100644 myproject1/img1.jpg
+ create mode 100644 myproject1/style.css
+ create mode 100644 myproject1/test.html
+
+
+$ git config
+
+$ git config --global user.name "samanta1401"
+$ git config --global user.email "psamanta1401@gmail.com"
+
+$ git config --list
+$ history
+$ clear 
+
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   git/command.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
