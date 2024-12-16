@@ -1,0 +1,61 @@
+What Is Git?
+
+Git is a distributed, open-source version control system (VCS) that enables you to store code, 
+track revision history, merge code changes, and revert to earlier code version when needed.
+
+Git Basics
+
+Git stores your source code and its full development history locally in a repository. 
+You can create a copy of your source code, known as a branch, which you can then work on in parallel 
+to the main version. When you are ready, you can commit changes to save your progress. Or you can merge 
+your branch back into the main version. Every time you commit, Git takes a snapshot of your work and 
+compares it to previous versions with a viewable operation called a diff. If there's been a change from
+previous commits, Git stores a new snapshot in the repository.
+
+What Are the Benefits of Git?
+
+Git has several key benefits:
+
+Historical Change Tracking – You can review a graph of how your commits have changed over time, see when 
+and by whom changes were made, and revert to a previous commit if needed. This history makes it easier to
+ identify and fix bugs.
+Work as a Team – You can easily share your code with teammates for review before you commit or merge back
+ to the main working branch. Additionally, the branching and review capabilities enable simultaneous 
+ development. Multiple people can work on the same file and resolve differences later.
+Improve Team Speed & Productivity – Git makes it easy for your team to track changes to your code. Now you 
+can focus on writing code instead of spending time tracking and merging different versions across your team.
+ Additionally, Git performs computations and stores your main repository locally, making it quicker on most 
+ operations than a centralized VCS.
+Availability and Redundancy – Git is a distributed VCS, meaning there is no single, central place where 
+everything is stored. In a distributed system, there are multiple backups in the event that you need one.
+ This approach also means that you can work offline and commit your changes when you’re ready.
+Git Is the Industry Standard – Due to its popularity, Git is supported by many integrated development
+ environments (IDEs) and many popular developer tools including AWS CodeCommit, Jenkins, and Travis. 
+ There are many free Git resources available, such as the Git open source page.
+
+ What does Git do?
+
+Manage projects with Repositories
+Clone a project to work on a local copy
+Control and track changes with Staging and Committing
+Branch and Merge to allow for work on different parts and versions of a project
+Pull the latest version of the project to a local copy
+Push local updates to the main project
+
+
+Working with Git
+
+
+Initialize Git on a folder, making it a Repository
+Git now creates a hidden folder to keep track of changes in that folder
+When a file is changed, added or deleted, it is considered modified
+You select the modified files you want to Stage
+The Staged files are Committed, which prompts Git to store a permanent snapshot of the files
+Git allows you to see the full history of every commit.
+You can revert back to any previous commit.
+Git does not store a separate copy of every file in every commit, but keeps track of changes made in each commit!
+
+?? - Untracked files
+A - Files added to stage
+M - Modified files
+D - Deleted files
