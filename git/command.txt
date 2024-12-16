@@ -108,3 +108,87 @@ Changes not staged for commit:
         modified:   git/command.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git add .
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   git/command.txt
+
+$ git commit -m "third commit"
+[main 946edd1] third commit
+ 1 file changed, 32 insertions(+)
+
+$ git log
+commit 946edd1aeb701b96c62543172c4cb728d2fb1d57 (HEAD -> main)
+Author: samanta1401 <psamanta1401@gmail.com>
+Date:   Mon Dec 16 16:53:32 2024 +0530
+
+    third commit
+
+commit 7106cd0b8202c4a2f141bddac7d5cafa42945bca
+Author: smanta1401 <105944619+SAMANTA1401@users.noreply.github.com>
+Date:   Mon Dec 16 15:47:59 2024 +0530
+
+    second commit
+
+
+1:36:07
+
+$ git show 946ed
+commit 946edd1aeb701b96c62543172c4cb728d2fb1d57 (HEAD -> main)
+Author: samanta1401 <psamanta1401@gmail.com>
+Date:   Mon Dec 16 16:53:32 2024 +0530
+
+    third commit
+
+diff --git a/git/command.txt b/git/command.txt
+index dd7b1cd..40e6bab 100644
+--- a/git/command.txt
++++ b/git/command.txt
+@@ -76,3 +76,35 @@ Changes not staged for commit:
+
+$ git reset .   # to unstage the commits
+Unstaged changes after reset:
+M       git/command.txt
+
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   git/command.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git branch
+* main
+
+$ git branch newsubbranch  # create new branch
+$ git branch
+* main
+  newsubbranch
+
+$ git checkout newsubbranch # switched to new branch and all code is copied to new branch
+Switched to branch 'newsubbranch'
+M       git/command.txt
+
+$ git status
+On branch newsubbranch
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   git/command.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        myproject1/xyz.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
