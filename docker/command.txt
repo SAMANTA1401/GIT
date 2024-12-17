@@ -1,0 +1,232 @@
+$ docker 
+$ docker -v
+# to create image
+$ docker build -t helloapp .  # helloapp -> name of the image \\ . -> local workspace
+#image list
+$ docker images 
+# to run container
+$ docker run -d -p 5000:5000 helloapp  # -d detach mode -p host 5000 port map to container port 5000
+$ docker run -d -p 8000:5000 helloapp  # -d detach mode -p host 8000 port map to container port 5000
+2562acb1db29bedbe7ff3cfbce869c7174f2bd6bf7575a3b1abe0599a938454c
+# to check all container
+$ docker ps -a
+CONTAINER ID   IMAGE                             COMMAND                  CREATED       STATUS                   PORTS     NAMES
+4b01155d8bc2   helloapp                          "python app.py"          2 hours ago   Exited (0) 2 hours ago             frosty_hofstadter
+587e31658428   helloapp                          "python app.py"          2 hours ago   Exited (0) 2 hours ago             vigilant_jemison
+2562acb1db29   helloapp                          "python app.py"          2 hours ago   Exited (0) 2 hours ago             unruffled_borg
+ad4b5ccd2869   c1f619b6477e                      "/docker-entrypoint.…"   3 hours ago   Exited (0) 3 hours ago             inspiring_cohen
+cc244729f360   docker/welcome-to-docker:latest   "/docker-entrypoint.…"   3 hours ago   Exited (0) 3 hours ago             welcome-to-docker
+# to check running container
+$ docker ps 
+CONTAINER ID   IMAGE      COMMAND           CREATED          STATUS          PORTS              
+      NAMES
+2562acb1db29   helloapp   "python app.py"   32 seconds ago   Up 31 seconds   0.0.0.0:5000->5000/tcp   unruffled_borg
+# to stop container
+$ docker stop 2562acb1db29 # container id name
+
+# to login docker-hub or aws ecr 
+$ docker login
+
+# to push image tag the image
+$ docker tag helloapp <your-docker-hub-username>/helloapp # repository name or image name inside the repository
+
+# to push image tag into docker-hub or aws ecr
+$ docker push <your-docker-hub-username>/helloapp # repository name or image name
+
+samanta1401/helloapp:latest  # repository name or image name
+
+$ docker images
+REPOSITORY                 TAG       IMAGE ID       CREATED         SIZE
+helloapp                   latest    bd60e4ed2da4   2 hours ago     1.17GB  # inside local docker engine
+samanta1401/helloapp       latest    bd60e4ed2da4   2 hours ago     1.17GB  # inside docker-hub 
+docker/welcome-to-docker   latest    c1f619b6477e   13 months ago   18.6MB  # inside local docker
+
+# to use the image
+$ docker pull <your-docker-hub-username>/helloapp:latest # repository name or image name
+
+$ docker pull docker/welcome-to-docker
+Using default tag: latest
+latest: Pulling from docker/welcome-to-docker
+Digest: sha256:eedaff45e3c78538087bdd9dc7afafac7e110061bbdd836af4104b10f10ab693
+Status: Image is up to date for docker/welcome-to-docker:latest
+docker.io/docker/welcome-to-docker:latest
+
+# docker run in interactive mode
+$ docker run -i -t docker/welcome-to-docker:latest /bin/sh
+$ docker run -it docker/welcome-to-docker:latest /bin/sh
+
+/ # ls
+bin                   home                  proc                  sys
+dev                   lib                   root                  tmp
+docker-entrypoint.d   media                 run                   usr
+docker-entrypoint.sh  mnt                   sbin                  var
+etc  
+
+/ # cd bin
+/bin # ls
+arch           dmesg          gzip           lzop           ping6          sleep
+ash            dnsdomainname  hostname       makemime       pipe_progress  stat
+base64         dumpkmap       ionice         mkdir          printenv       stty
+bbconfig       echo           iostat         mknod          ps             su
+busybox        ed             ipcalc         mktemp         pwd            sync
+cat            egrep          kbd_mode       more           reformime      tar
+chattr         false          kill           mount          rev            touch
+chgrp          fatattr        link           mountpoint     rm             true
+chmod          fdflush        linux32        mpstat         rmdir          umount
+chown          fgrep          linux64        mv             run-parts      uname
+cp             fsync          ln             netstat        sed            usleep
+date           getopt         login          nice           setpriv        watch
+dd             grep           ls             pidof          setserial      zcat
+df             gunzip         lsattr         ping           sh
+/bin # exit
+
+$ docker run -it ubuntu /bin/bash
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+de44b265507a: Pull complete
+Digest: sha256:80dd3c3b9c6cecb9f1667e9290b3bc61b78c2678c02cbdae5f0fea92cc6734ab
+Status: Downloaded newer image for ubuntu:latest
+root@c0a4c4c2cb39:/# ls   # container id c0a4c4c2cb39
+bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  lib   media  opt  root  sbin  sys  usr
+root@c0a4c4c2cb39:/# cd bin
+root@c0a4c4c2cb39:/bin# ls
+'['                        expiry             more                shuf
+ addpart                   expr               mount               skill
+ apt                       factor             mountpoint          slabtop
+ apt-cache                 faillog            mv                  sleep
+ apt-cdrom                 fallocate          namei               snice
+ apt-config                false              nawk                sort
+ apt-get                   fgrep              newgrp              split
+ apt-key                   find               nice                stat
+ apt-mark                  findmnt            nisdomainname       stdbuf
+ arch                      flock              nl                  stty
+ awk                       fmt                nohup               su
+ b2sum                     fold               nproc               sum
+ base32                    free               nsenter             sync
+ base64                    getconf            numfmt              tabs
+ basename                  getent             od                  tac
+ basenc                    getopt             pager               tail
+ bash                      gpasswd            partx               tar
+ bashbug                   gpgv               passwd              taskset
+ captoinfo                 grep               paste               tee
+ cat                       groups             pathchk             tempfile
+ chage                     gunzip             perl                test
+ chattr                    gzexe              perl5.38.2          tic
+ chcon                     gzip               pgrep               timeout
+ chfn                      hardlink           pidof               tload
+ chgrp                     head               pidwait             toe
+ chmod                     hostid             pinky               top
+ choom                     hostname           pkill               touch
+ chown                     i386               pldd                tput
+ chrt                      iconv              pmap                tr
+ chsh                      id                 pr                  true
+ cksum                     infocmp            printenv            truncate
+ clear                     infotocap          printf              tset
+ clear_console             install            prlimit             tsort
+ cmp                       ionice             ps                  tty
+ comm                      ipcmk              ptx                 tzselect
+ cp                        ipcrm              pwd                 uclampset
+ csplit                    ipcs               pwdx                umount
+ cut                       ischroot           rbash               uname
+ dash                      join               readlink            uncompress
+ date                      kill               realpath            unexpand
+ dd                        last               rename.ul           uniq
+ deb-systemd-helper        lastb              renice              unlink
+ deb-systemd-invoke        lastlog            reset               unshare
+ debconf                   ld.so              resizepart          update-alternatives
+ debconf-apt-progress      ldd                rev                 uptime
+ debconf-communicate       link               rgrep               users
+ debconf-copydb            linux32            rm                  utmpdump
+ debconf-escape            linux64            rmdir               vdir
+ debconf-set-selections    ln                 run-parts           vmstat
+ debconf-show              locale             runcon              w
+ delpart                   locale-check       savelog             wall
+ df                        localedef          script              watch
+ diff                      logger             scriptlive          wc
+ diff3                     login              scriptreplay        wdctl
+ dir                       logname            sdiff               whereis
+ dircolors                 ls                 sed                 which
+ dirname                   lsattr             select-editor       which.debianutils
+ dmesg                     lsblk              sensible-browser    who
+ dnsdomainname             lscpu              sensible-editor     whoami
+ domainname                lsipc              sensible-pager      x86_64
+ dmesg                     lsblk              sensible-browser    who
+ dnsdomainname             lscpu              sensible-editor     whoami
+ domainname                lsipc              sensible-pager      x86_64
+ dnsdomainname             lscpu              sensible-editor     whoami
+ domainname                lsipc              sensible-pager      x86_64
+ domainname                lsipc              sensible-pager      x86_64
+ dpkg                      lslocks            sensible-terminal   xargs
+ dpkg-deb                  lslogins           seq                 yes
+ dpkg-divert               lsmem              setarch             ypdomainname
+ dpkg-maintscript-helper   lsns               setpriv             zcat
+ dpkg-query                man                setsid              zcmp
+ dpkg-realpath             mawk               setterm             zdiff
+ dpkg-split                mcookie            sg                  zdump
+ dpkg-statoverride         md5sum             sh                  zegrep
+ dpkg-trigger              md5sum.textutils   sha1sum             zfgrep
+ du                        mesg               sha224sum           zforce
+ echo                      mkdir              sha256sum           zgrep
+ egrep                     mkfifo             sha384sum           zless
+ env                       mknod              sha512sum           zmore
+ expand                    mktemp             shred               znew
+root@c0a4c4c2cb39:/bin# exit
+
+$ docker run -it helloapp /bin/bash
+root@a52e4c799680:/app# ls  # container id a52e4c799680
+Dockerfile  app.py  git         requirements.txt  tempCodeRunnerFile.py
+README.md   docker  myproject1  stashingdemo.txt
+root@a52e4c799680:/app# touch myfile.txt
+root@a52e4c799680:/app# ls
+Dockerfile  app.py  git         myproject1        stashingdemo.txt
+README.md   docker  myfile.txt  requirements.txt  tempCodeRunnerFile.py
+root@a52e4c799680:/app#
+
+#to delete image files
+$ docker rmi -f ubuntu:latest
+Untagged: ubuntu:latest
+Untagged: ubuntu@sha256:80dd3c3b9c6cecb9f1667e9290b3bc61b78c2678c02cbdae5f0fea92cc6734ab        
+Deleted: sha256:b1d9df8ab81559494794e522b380878cf9ba82d4c1fb67293bcf931c3aa69ae4
+
+$ docker images
+REPOSITORY                 TAG       IMAGE ID       CREATED         SIZE
+helloapp                   latest    bd60e4ed2da4   4 hours ago     1.17GB
+samanta1401/helloapp       latest    bd60e4ed2da4   4 hours ago     1.17GB
+docker/welcome-to-docker   latest    c1f619b6477e   13 months ago   18.6MB
+
+# container nameing  interactive mode
+docker run -it --name mycontainer helloapp /bin/bash
+
+# changes to container
+$ docker diff mycontainer
+C /root
+A /root/.bash_history
+
+$ docker diff modest_diffie # container name
+C /app
+A /app/myfile.txt
+C /root
+A /root/.bash_history
+
+# creates a image from the container with changes
+$ docker commit modest_diffie updatemodest_diffie
+
+$ docker images
+REPOSITORY                 TAG       IMAGE ID       CREATED          SIZE
+updatemodest_diffie        latest    9448691c7454   12 seconds ago   1.17GB
+helloapp                   latest    bd60e4ed2da4   5 hours ago      1.17GB
+samanta1401/helloapp       latest    bd60e4ed2da4   5 hours ago      1.17GB
+docker/welcome-to-docker   latest    c1f619b6477e   13 months ago    18.6MB
+
+# creat a file
+$ touch test
+# create tar of the file
+$ tar -cvf test.tar test
+# create zzip of the file
+$ gzip test.tar 
+
+$ docker build -t newimage .
+$ docker run -i -t --name newcontainer newimage /bin/bash
+root@407c07c19a72:/temp# ls  # container id 407c07c19a72  # temp is working directory
+test  test.txt

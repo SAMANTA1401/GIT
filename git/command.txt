@@ -659,3 +659,17 @@ $ git revert c4c1ffa  # remove reseting file
 [main 6905de6] Revert "reseting file added"
  1 file changed, 0 insertions(+), 0 deletions(-)
  delete mode 100644 reseting.txt
+
+ $ git push -u origin main
+Enumerating objects: 67, done.
+Counting objects: 100% (67/67), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (62/62), done.
+Writing objects: 100% (66/66), 1.41 MiB | 981.00 KiB/s, done.
+Total 66 (delta 27), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (27/27), done.
+remote: This repository moved. Please use the new location:
+remote:   https://github.com/SAMANTA1401/GIT_and_Docker.git
+To https://github.com/SAMANTA1401/GIT.git
+   174ea51..69c153b  main -> main
+branch 'main' set up to track 'origin/main'.
