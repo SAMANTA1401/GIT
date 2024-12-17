@@ -301,3 +301,141 @@ $ git branch
 
 $ git branch -d newsubbranch
 Deleted branch newsubbranch (was 0f0be4f).
+
+
+$ git branch branchsub1
+
+$ git branch
+  branchsub1
+* main
+
+$ git checkout branchsub1
+Switched to branch 'branchsub1'
+
+$ git branch
+* branchsub1
+  main
+
+$ git status
+On branch branchsub1
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   myproject1/testing.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git checkout main
+Switched to branch 'main'
+M       myproject1/testing.py
+Your branch is ahead of 'origin/main' by 5 commits.
+  (use "git push" to publish your local commits)
+
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 5 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   myproject1/testing.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git checkout branchsub1
+Switched to branch 'branchsub1'
+M       myproject1/testing.py
+
+$ git add .
+warning: in the working copy of 'myproject1/testing.py', CRLF will be replaced by LF the next time Git touches it
+
+$ git commit -m "multiplication added"
+[branchsub1 3531e4a] multiplication added
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 5 commits.
+  (use "git push" to publish your local commits)
+
+
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 5 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        myproject1/testing2.py           #print("hello how are you?")                    
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+$ git add .
+
+$ git commit -m "dreated testing2.py on main"
+[main 39945de] dreated testing2.py on main
+ 1 file changed, 1 insertion(+)
+ create mode 100644 myproject1/testing2.py
+
+$ git checkout branchsub1
+Switched to branch 'branchsub1'
+
+
+CONFLICT >>>>>
+
+now i created myproject1/testing2.py on branchsub1 which is same as main branch but inside this i created different message than which inside the main branch
+
+$ git branch
+* branchsub1
+  main
+
+$ git status
+On branch branchsub1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        myproject1/testing2.py   #print("what you are doing ? ")
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+$ git add .
+$ git commit -m "testing2.py added on branchsub1"
+[branchsub1 0150331] testing2.py added on branchsub1
+ 1 file changed, 1 insertion(+)
+ create mode 100644 myproject1/testing2.py
+
+$ git checkout main  # always merge from master/main branch
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 6 commits.
+  (use "git push" to publish your local commits)
+
+$ git merge branchsub1
+Auto-merging myproject1/testing2.py
+CONFLICT (add/add): Merge conflict in myproject1/testing2.py    # when two developer are working on same file then git cant understand who's code is come first place 
+# print("hello how are you?") this or print("what you are doing ? ") this.
+Automatic merge failed; fix conflicts and then commit the result.
+
+<<<<<<< HEAD
+print("hello how are you?")
+=======
+print("what you are doing ? ")
+>>>>>>> branchsub1
+
+# open the file check the code sequence and manully correct the code sequence like
+
+print("hello how are you?")
+
+print("what you are doing ? ")
+
+then add and commit
+
+$ git add .
+$ git commit -m "resolve conflict"
+[main 5992a25] resolve conflict
+
+1:30:06
+
+stashing>>>
+
+$ touch stashingdemo.txt
+
