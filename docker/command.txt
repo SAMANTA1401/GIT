@@ -230,3 +230,9 @@ $ docker build -t newimage .
 $ docker run -i -t --name newcontainer newimage /bin/bash
 root@407c07c19a72:/temp# ls  # container id 407c07c19a72  # temp is working directory
 test  test.txt
+
+# delete image
+$ docker rmi -f newimage # image name
+
+#delete container
+$ docker rm -f newcontainer # container name or id
